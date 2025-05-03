@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Corgi: Galactic Ace!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Achievement Notification Area -->
+    <div id="achievementNotifier" class="hidden">
+        <div id="achievementIcon">🏆</div>
+        <div id="achievementText">
+            <div id="achievementTitle">Achievement Unlocked!</div>
+            <div id="achievementDesc">Description goes here</div>
+        </div>
+    </div>
+
+    <div class="game-container">
+        <!-- Loading Screen -->
+        <div id="loadingScreen">
+            <h1>Loading Assets...</h1>
+            <div class="spinner"></div>
+            <p id="loadingStatus" style="margin-top: 10px; color: #ccc;"></p> <!-- Loading Status Text -->
+        </div>
+
+        <!-- Game Content -->
+        <div id="gameContent" class="hidden">
+            <div class="title-area">
+                <h1>Cosmic Corgi: Galactic Ace!</h1>
+                <div class="menu-buttons">
+                     <button id="achievementsButton" class="menu-btn">Achievements</button>
+                     <button id="shopButton" class="menu-btn">Shop</button>
+                </div>
+                 <div id="currencyDisplay">★ Star Bits: 0</div>
+            </div>
+
+            <!-- Boss Health Bar Area -->
+            <div id="bossHealthBarContainer" class="hidden">
+                 <div id="bossName">BOSS NAME</div>
+                 <div id="bossHealthBar"><div id="bossHealthFill"></div></div>
+            </div>
+
+            <!-- Pause Overlay -->
+            <div id="pauseOverlay" class="hidden">PAUSED<br><small>(P or Esc to Resume)</small></div>
+
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+            <!-- Debug Info Overlay -->
+            <div id="debugInfo">State: Init</div>
+
+            <!-- In-Game UI Bar -->
+            <div id="ui">
+                 <!-- Score/Level/XP Area -->
+                <div class="player-stats">
+                    <div id="score">Score: 0</div>
+                     <div class="level-xp">
+                        <span id="levelDisplay">Level: 1</span>
+                        <div id="xpBarContainer">
+                            <div id="xpBarFill"></div>
+                            <span id="xpText">XP: 0 / 100</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="comboIndicator">Combo: x1</div>
+                <div class="powerup-indicators"> <!-- Populated by JS -->
+                    <div id="shieldIndicator" class="indicator hidden">SHIELD: <span id="shieldTimer">0.0</span>s</div>
+                    <div id="multiplierIndicator" class="indicator hidden">SCORE x2: <span id="multiplierTimer">0.0</span>s</div>
+                    <div id="rapidFireIndicator" class="indicator hidden">RAPID FIRE: <span id="rapidFireTimer">0.0</span>s</div>
+                </div>
+                <div id="instructions">Loading...</div>
+            </div>
+
+            <!-- Game Over Screen -->
+            <div id="gameOverScreen" class="hidden">
+                <h2>Game Over!</h2>
+                <p>Final Score: <span id="finalScore">0</span></p>
+                 <p>Star Bits Earned: ★ <span id="earnedStarBits">0</span></p> <!-- Show bits earned -->
+                <button id="restartButton">Play Again?</button>
+            </div>
+        </div>
+    </div>
+
+     <!-- Achievements Modal -->
+    <div id="achievementsModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('achievementsModal')">&times;</span>
+            <h2>Achievements</h2>
+            <ul id="achievementsList"></ul> <!-- Populated by JS -->
+        </div>
+    </div>
+
+    <!-- Shop Modal -->
+    <div id="shopModal" class="modal hidden">
+        <div class="modal-content">
+             <span class="close-button" onclick="closeModal('shopModal')">&times;</span>
+            <h2>Shop</h2>
+             <p>Upgrade your Corgi!</p>
+            <ul id="shopItemsList"></ul> <!-- Populated by JS -->
+            <div id="shopCurrency">Your Star Bits: ★ <span id="shopStarBits">0</span></div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
